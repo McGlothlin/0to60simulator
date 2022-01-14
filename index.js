@@ -22,6 +22,11 @@ class Car {
         c.fillStyle = this.color
         c.fill()
     }
+
+    update() {
+        this.draw()
+        this.y = this.y - this.velocity
+    }
 }
 
 
@@ -60,6 +65,7 @@ class Finish {
         let xCounter = 0
         let yCounter = 0
         const initialX = this.x
+        const initialY = this.y
 
         let color = '#111111'
         while (yCounter < this.thickness) {
@@ -80,7 +86,7 @@ class Finish {
             xCounter = xCounter + 1 // Gives us that offset for checkers
             yCounter = yCounter + 1
         }
-
+        this.y = initialY
     }
 }
 
@@ -106,14 +112,21 @@ class FinishSquare {
 const start = new Start(0, 780, canvas.width, 20, 'gray')
 const finish = new Finish(0, 100, 20, 20, 3)
 
-const car1 = new Car(canvas.width / 2 - 75, 800, 30, 66, 0, 'crimson')
-const car2 = new Car(canvas.width / 2 + 75, 800, 30, 66, 0, 'navy')
+const car1 = new Car(canvas.width / 2 - 75, 800, 30, 66, 1, 'crimson')
+const car2 = new Car(canvas.width / 2 + 75, 800, 30, 66, 1.1, 'navy')
 
-start.draw()
-finish.draw()
-car1.draw()
-car2.draw()
 
+function animate() {
+    requestAnimationFrame(animate)
+    c.clearRect(0, 0, canvas.width ,canvas.height)
+
+    start.draw()
+    finish.draw()
+    car1.draw()
+    car1.update()
+    car2.draw()
+    car2.update()
+}
 
 
 var box1 = document.createElement('input'); // creates the element
@@ -145,3 +158,5 @@ car2Label.style.position = 'absolute'
 car2Label.style.left = '900'
 car2Label.style.top = '880'
 document.body.appendChild(car2Label)
+
+animate()
