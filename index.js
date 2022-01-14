@@ -129,34 +129,4 @@ function animate() {
 }
 
 
-var box1 = document.createElement('input'); // creates the element
-box1.style.position = 'absolute'
-box1.style.left = '200'
-box1.style.top = '900'
-box1.id = 'car1_input'
-document.body.appendChild(box1);
-
-var car1Label = document.createElement('label')
-car1Label.setAttribute("for", 'car1_input')
-car1Label.innerHTML = 'Car 1 0-60 Time'
-car1Label.style.position = 'absolute'
-car1Label.style.left = '200'
-car1Label.style.top = '880'
-document.body.appendChild(car1Label)
-
-
-var box2 = document.createElement('input')
-box2.style.position = 'absolute'
-box2.style.left = '900'
-box2.style.top = '900'
-document.body.appendChild(box2)
-
-var car2Label = document.createElement('label')
-car2Label.setAttribute("for", 'car1_input')
-car2Label.innerHTML = 'Car 2 0-60 Time'
-car2Label.style.position = 'absolute'
-car2Label.style.left = '900'
-car2Label.style.top = '880'
-document.body.appendChild(car2Label)
-
 animate()
