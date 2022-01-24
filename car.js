@@ -17,7 +17,7 @@ class Car {
         c.fill()
     }
 
-    update() {
+    update(refreshRate) {
         this.draw()
         this.y = this.y - this.velocity
     }
