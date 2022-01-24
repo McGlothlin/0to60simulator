@@ -1,5 +1,6 @@
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
+var isAnimating = 0
 
 canvas.width = innerWidth
 canvas.height = innerHeight
@@ -12,18 +13,25 @@ const monitorRefreshRate = 60
 const start = new Start(0, canvas.height - 200, canvas.width, 20, 'gray')
 const finish = new Finish(0, 100, 20, 20, 3)
 
-car1PerformanceTime = document.getElementById('car1input').value
-car2PerformanceTime = document.getElementById('car2input').value
+// var car1PerformanceTime = Number(document.getElementById('car1input').value)
+// var car2PerformanceTime = Number(document.getElementById('car2input').value)
+// var car1velocity = raceDistance / (car1PerformanceTime * monitorRefreshRate)
+// var car2velocity = raceDistance / (car2PerformanceTime * monitorRefreshRate)
+//
+car1 = initCar1()
+car2 = initCar2()
 
-const car1velocity = raceDistance / (car1PerformanceTime * monitorRefreshRate)
-const car2velocity = raceDistance / (car2PerformanceTime * monitorRefreshRate)
 
-const car1 = new Car(canvas.width / 2 - 75, startLinePosition, 30, 66, car1velocity, 'crimson')
-const car2 = new Car(canvas.width / 2 + 75, startLinePosition, 30, 66, car2velocity, 'navy')
+// Draw these when the page loads.
+function beginDraw() {
+    start.draw()
+    finish.draw()
+    car1.draw()
+    car2.draw()
+}
 
-
-function animate(refreshRate) {
-    requestAnimationFrame(animate)
+function animate() {
+    animationFrame = requestAnimationFrame(animate)
     now = Date.now()
     elapsed = now - then
     if (elapsed > fpsInterval) {
@@ -38,17 +46,37 @@ function animate(refreshRate) {
         car2.draw()
         car2.update()
         animationEndTime = Date.now()
-
     }
 }
 
-// Source: https://stackoverflow.com/a/19772220/5472966
 function startAnimating(refreshRate) {
+    // Only allow one animation frame at a time.
+    if (isAnimating !== 0) {
+        return
+    }
+    isAnimating += 1
+
+    var car1PerformanceTime = Number(document.getElementById('car1input').value)
+    var car2PerformanceTime = Number(document.getElementById('car2input').value)
+    var car1velocity = raceDistance / (car1PerformanceTime * monitorRefreshRate)
+    var car2velocity = raceDistance / (car2PerformanceTime * monitorRefreshRate)
+
+    car1.velocity = car1velocity
+    car2.velocity = car2velocity
+
     fpsInterval = 1000 / refreshRate;
     then = Date.now();
     startTime = then;
     animate(refreshRate);
 }
-startAnimating(monitorRefreshRate)
 
-//animate()
+function reset() {
+    cancelAnimationFrame(animationFrame)
+    c.clearRect(0, 0, canvas.width, canvas.height)
+    car1 = initCar1()
+    car2 = initCar2()
+    beginDraw()
+    isAnimating = 0
+}
+
+beginDraw()

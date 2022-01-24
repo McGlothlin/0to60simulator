@@ -22,3 +22,13 @@ class Car {
         this.y = this.y - this.velocity
     }
 }
+
+function initCar1() {
+    return new Car(canvas.width / 2 - 75, startLinePosition + 20, 30, 66, 0, 'crimson')
+}
+function initCar2() {
+    return new Car(canvas.width / 2 + 75, startLinePosition + 20, 30, 66, 0, 'navy')
+}
+
+
+
