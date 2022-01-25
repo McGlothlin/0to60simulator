@@ -5,12 +5,12 @@ var isAnimating = 0
 canvas.width = innerWidth
 canvas.height = innerHeight
 
-const startLinePosition = canvas.height - 200
+const startLinePosition = canvas.height - 250
 const finishLinePosition = 100
 const raceDistance = startLinePosition - finishLinePosition
 const monitorRefreshRate = 60
 
-const start = new Start(0, canvas.height - 200, canvas.width, 20, 'gray')
+const start = new Start(0, startLinePosition, canvas.width, 20, 'gray')
 const finish = new Finish(0, 100, 20, 20, 3)
 
 car1 = initCar1()

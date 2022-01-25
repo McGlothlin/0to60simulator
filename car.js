@@ -24,10 +24,10 @@ class Car {
 }
 
 function initCar1() {
-    return new Car(canvas.width / 2 - 75, startLinePosition + 20, 30, 66, 0, 'crimson')
+    return new Car(canvas.width / 2 - (canvas.width / 6), startLinePosition + 20, 30, 66, 0, 'crimson')
 }
 function initCar2() {
-    return new Car(canvas.width / 2 + 75, startLinePosition + 20, 30, 66, 0, 'navy')
+    return new Car(canvas.width / 2 + (canvas.width / 6), startLinePosition + 20, 30, 66, 0, 'navy')
 }
 
 
