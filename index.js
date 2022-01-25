@@ -56,8 +56,8 @@ function startAnimating(refreshRate) {
 
     var car1PerformanceTime = Number(document.getElementById('car1input').value)
     var car2PerformanceTime = Number(document.getElementById('car2input').value)
-    var car1velocity = raceDistance / (car1PerformanceTime * monitorRefreshRate)
-    var car2velocity = raceDistance / (car2PerformanceTime * monitorRefreshRate)
+    var car1velocity = raceDistance / (car1PerformanceTime * refreshRate)
+    var car2velocity = raceDistance / (car2PerformanceTime * refreshRate)
 
     car1.velocity = car1velocity
     car2.velocity = car2velocity
@@ -65,7 +65,6 @@ function startAnimating(refreshRate) {
     // Basic idea from: https://stackoverflow.com/a/19772220/5472966
     fpsInterval = 1000 / refreshRate;
     then = Date.now();
-    startTime = then;
     animate(refreshRate);
 }
 
