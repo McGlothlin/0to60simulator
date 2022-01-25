@@ -20,8 +20,12 @@ car2 = initCar2()
 function beginDraw() {
     start.draw()
     finish.draw()
-    car1.draw()
-    car2.draw()
+    car1.image.onload = function() {
+        car1.draw()
+    }
+    car2.image.onload = function() {
+        car2.draw()
+    }
 }
 
 function animate() {
