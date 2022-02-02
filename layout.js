@@ -34,15 +34,12 @@ class Finish {
         let yCounter = 0
         const initialX = this.x
         const initialY = this.y
+        const colors = ['#EEEEEE', '#111111']
+        var color = colors[0]
 
-        let color = '#111111'
         while (yCounter < this.thickness) {
             while (this.x < canvas.width) {
-                if (xCounter % 2 === 0) {
-                    color = '#EEEEEE'
-                } else {
-                    color = '#111111'
-                }
+                color = colors[xCounter % 2]
                 const square = new FinishSquare(this.x, this.y, this.squareWidth, this.squareWidth, color)
                 square.draw()
                 xCounter = xCounter + 1
@@ -51,8 +48,7 @@ class Finish {
 
             this.y = this.y - this.squareWidth
             this.x = initialX
-            xCounter = xCounter + 1 // Gives us that offset for checkers
-            yCounter = yCounter + 1
+            xCounter = yCounter = yCounter + 1 // Gives us that offset for checkers
         }
         this.y = initialY
     }
