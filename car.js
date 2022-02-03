@@ -1,3 +1,6 @@
+const carWidth = 50
+const carHeight = 100
+
 class Car {
     constructor(x, y, width, height, velocity, imagesrc) {
         this.x = x
@@ -23,9 +26,9 @@ class Car {
 }
 
 function initCar1() {
-    return new Car(canvas.width / 2 - (canvas.width / 6), startLinePosition + 20, 50, 100, 0, 'images/auto_red.png')
+    return new Car(canvas.width / 6, startLinePosition + 20, carWidth, carHeight, 0, 'images/auto_red.png')
 }
 
 function initCar2() {
-    return new Car(canvas.width / 2 + (canvas.width / 6), startLinePosition + 20, 50, 100, 0, 'images/auto_blue.png')
+    return new Car(canvas.width - canvas.width / 6 - carWidth, startLinePosition + 20, carWidth, carHeight, 0, 'images/auto_blue.png')
 }

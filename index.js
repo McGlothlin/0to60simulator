@@ -5,7 +5,7 @@ var isAnimating = 0
 canvas.width = innerWidth
 canvas.height = innerHeight
 
-const startLinePosition = canvas.height - 250
+const startLinePosition = canvas.height - 320
 const finishLinePosition = 100
 const raceDistance = startLinePosition - finishLinePosition
 const monitorRefreshRate = 60
